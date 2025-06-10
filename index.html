@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services - Proof99</title>
+  <title>Proof99</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     /* Base styles */
@@ -59,13 +59,13 @@
       transition: all 0.2s ease-in-out;
     }
 
-    .navbar ul {
+    .navbar nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
     }
 
-    .navbar ul li a {
+    .navbar nav ul li a {
       text-decoration: none;
       color: #222;
       font-weight: 600;
@@ -74,7 +74,7 @@
       display: inline-block;
     }
 
-    .navbar ul li a:hover {
+    .navbar nav ul li a:hover {
       color: #7b9bb1;
       transform: scale(1.08);
     }
@@ -95,95 +95,179 @@
       transform: scale(1.06);
     }
 
-    /* Services Hero */
-    .services-hero {
-      background-color: #f5f5f5;
-      padding: 2.5rem 0 1.5rem 0;
-      text-align: center;
-    }
-
-    .services-hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: #222;
-    }
-
-    .services-hero p {
-      font-size: 1.1rem;
-      color: #444;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Services Grid Section */
-    .services-section {
-      padding: 4rem 0;
-      background-color: #ffffff;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 0 14px rgba(0, 0, 0, 0.04);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    /* Mobile Menu Toggle Button */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
       cursor: pointer;
-      border: 1px solid #f0f0f0;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .service-embed {
-      width: 100%;
-      height: 280px;
-      margin-bottom: 1rem;
-      border-radius: 12px;
-      overflow: hidden;
-      background-color: #f8f9fa;
-      display: flex;
-      align-items: center;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+      flex-direction: column;
+      width: 30px;
+      height: 30px;
       justify-content: center;
+      align-items: center;
     }
 
-    .service-embed img {
+    .mobile-menu-toggle:hover {
+      background-color: rgba(123, 155, 177, 0.1);
+    }
+
+    .mobile-menu-toggle span {
       display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
+      width: 20px;
+      height: 2px;
+      background-color: #222;
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
     }
 
-    .service-embed .placeholder {
-      color: #999;
-      font-size: 0.9rem;
-      text-align: center;
+    /* Hide mobile CTA by default */
+    .mobile-cta {
+      display: none;
     }
 
-    .service-card h3 {
-      font-size: 1.3rem;
+    /* Mobile Navigation Styles */
+    @media (max-width: 968px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .nav-flex {
+        position: relative;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      /* Hide desktop navigation and CTA on mobile */
+      .navbar nav,
+      .navbar .cta {
+        display: none;
+      }
+      
+      .navbar nav.active {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: -1rem;
+        right: -1rem;
+        background-color: rgba(225, 234, 242, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+      
+      .navbar nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+      }
+      
+      .navbar nav ul li {
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      
+      .navbar nav ul li:last-child {
+        border-bottom: none;
+      }
+      
+      .navbar nav ul li a {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        transform: none;
+      }
+      
+      .navbar nav ul li a:hover {
+        background-color: rgba(123, 155, 177, 0.1);
+        transform: none;
+      }
+      
+      /* Show mobile menu toggle */
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      /* Show mobile CTA in menu */
+      .mobile-cta {
+        display: block;
+        margin-top: 0.5rem;
+        border-bottom: none;
+      }
+      
+      .mobile-cta a {
+        background-color: #7b9bb1 !important;
+        color: white !important;
+        margin: 0 1rem;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+      
+      .mobile-cta a:hover {
+        background-color: #6a90a7 !important;
+      }
+    }
+
+    /* Smaller mobile devices */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 0.75rem;
+      }
+      
+      .logo {
+        font-size: 1.3rem;
+      }
+      
+      .navbar {
+        padding: 0.75rem 0;
+      }
+      
+      .navbar nav ul li a {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 0;
+      background-color: #f5f5f5;
+      overflow: visible;
+    }
+
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-text {
+      flex: 1 1 50%;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
       margin-bottom: 1rem;
-      color: #222;
     }
 
-    .service-card p {
-      color: #444;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
+    .hero-text p {
+      font-size: 1.2rem;
+    }
+
+    .tagline {
+      color: #7b9bb1;
+      font-weight: 600;
+      font-size: 1.3rem;
     }
 
     /* Button with Arrow */
@@ -192,7 +276,7 @@
       align-items: center;
       justify-content: center;
       gap: 0rem;
-      margin-top: auto;
+      margin-top: 1.5rem;
       padding: 0.75rem 1.3rem;
       border: 2px solid #111;
       background: none;
@@ -219,12 +303,251 @@
     .button-with-arrow:hover {
       padding-right: 2.5rem;
       padding-left: 1.3rem;
-      background-color: #f0f0f0;
     }
 
     .button-with-arrow:hover .arrow {
       opacity: 1;
       transform: translateY(-50%) translateX(0);
+    }
+
+    /* Responsive 3D Graphic Styles */
+    .hero-embed-wrapper {
+      position: absolute;
+      top: -135px;
+      right: 0;
+      width: 670px;
+      height: 650px;
+      transform: scale(0.85);
+      transform-origin: top right;
+      z-index: 3;
+    }
+
+    .hero-embed {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .iframe-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+    }
+
+    .badge-cover {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 150px;
+      height: 50px;
+      background-color: #f5f5f5;
+      z-index: 6;
+      border-radius: 8px;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 1200px) {
+      .hero-embed-wrapper {
+        width: min(550px, 45vw);
+        height: min(530px, 43vw);
+        top: -8%;
+        right: -3%;
+      }
+    }
+
+    @media (max-width: 968px) {
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-embed-wrapper {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: min(500px, 80vw);
+        height: min(480px, 76vw);
+        margin: 2rem auto 0 auto;
+        transform-origin: center;
+      }
+      
+      .hero-text {
+        flex: none;
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-embed-wrapper {
+        width: min(400px, 90vw);
+        height: min(380px, 86vw);
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-embed-wrapper {
+        width: 95vw;
+        height: 90vw;
+      }
+      
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      
+      .badge-cover {
+        width: 15vw;
+        height: 5vw;
+        border-radius: 1vw;
+      }
+    }
+
+    /* Services Preview */
+    .services-preview {
+      padding: 4rem 0;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .services-header h2 {
+      font-size: 2rem;
+    }
+
+    .see-all {
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      color: #444;
+      border: 2px solid #111;
+      border-radius: 5px;
+      padding: 0.75rem 1.3rem;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0rem;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .see-all .arrow {
+      opacity: 0;
+      transition: all 0.3s ease;
+      position: absolute;
+      right: 1.3rem;
+      top: 50%;
+      transform: translateY(-50%) translateX(10px);
+    }
+
+    .see-all:hover {
+      padding-right: 2.5rem;
+      padding-left: 1.3rem;
+      background-color: #f0f0f0;
+    }
+
+    .see-all:hover .arrow {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.04);
+      padding: 1.5rem;
+      flex: 1 1 30%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .service-embed {
+      width: 100%;
+      height: 280px;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .service-embed img {
+      display: block;
+      width: 100%;
+      margin-top: -10px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .service-card.hoverable {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .service-card.hoverable:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    /* About Cards */
+    .about-cards {
+      display: flex;
+      justify-content: space-around;
+      padding: 3rem 0;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+    }
+
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .card p,
+    .card ul {
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .card ul {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
     }
 
     /* Footer */
@@ -299,191 +622,109 @@
     .footer-contact-link:hover::after {
       width: calc(100% - 1rem);
     }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .navbar nav {
-        display: none;
-      }
-      
-      .cta {
-        display: none;
-      }
-      
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      
-      .services-hero {
-        padding: 2rem 0 1rem 0;
-      }
-      
-      .services-hero h1 {
-        font-size: 2.2rem;
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .service-card {
-        padding: 1.2rem;
-      }
-      
-      .service-embed {
-        height: 240px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1rem;
-      }
-      
-      .logo {
-        font-size: 1.6rem;
-      }
-      
-      .services-hero {
-        padding: 1.5rem 0 1rem 0;
-      }
-      
-      .services-hero h1 {
-        font-size: 1.8rem;
-      }
-    }
   </style>
 </head>
 <body>
+  <!-- Mobile-optimized navbar -->
   <header class="navbar">
     <div class="container nav-flex">
       <a href="index.html" class="logo">Proof99</a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <a href="contact.html" class="cta">Contact Us</a>
       
-      <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+      <!-- Mobile menu toggle button -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
       
-      <!-- Mobile Menu -->
-      <div class="mobile-menu" id="mobileMenu">
+      <!-- Navigation menu -->
+      <nav id="mobile-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="#">About</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <!-- Mobile CTA button inside menu -->
+          <li class="mobile-cta"><a href="contact.html">Contact Us</a></li>
         </ul>
-        <div class="mobile-cta">
-          <a href="contact.html" class="cta">Contact Us</a>
-        </div>
-      </div>
+      </nav>
+      
+      <!-- Desktop CTA button -->
+      <a href="contact.html" class="cta">Contact Us</a>
     </div>
   </header>
 
-  <!-- Services Hero -->
-  <section class="services-hero">
-    <div class="container">
-      <h1>Our Services</h1>
-      <p>Comprehensive IT solutions tailored to accelerate your business growth and digital transformation.</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Experienced, Personalized<br>IT Solutions</h1>
+        <p><span class="tagline">Autonomy, reliability, clarity.</span></p>
+        <a href="contact.html" class="learn-btn button-with-arrow">Learn More <span class="arrow">→</span></a>
+      </div>
+      <div class="hero-embed-wrapper">
+        <div class="hero-embed">
+          <iframe 
+            src="https://my.spline.design/laptopmockup-GJJf2HqIU2zmP0xenLIRXvB2/" 
+            frameborder="0" 
+            allowfullscreen>
+          </iframe>
+          <div class="iframe-overlay"></div>
+          <div class="badge-cover"></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Services Grid -->
-  <section class="services-section">
-    <div class="container">
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-embed">
-            <img src="assets/ai-agent.png" alt="AI Agent" />
-          </div>
-          <h3>Personalized AI Agents</h3>
-          <p>Build intelligent assistants customized for your workflows using secure, scalable large language models.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-embed">
-            <img src="assets/data-analytics.png" alt="Data Analytics" />
-          </div>
-          <h3>Data Analytics</h3>
-          <p>Unlock insights with tailored dashboards, custom reporting pipelines, and predictive models.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-embed">
-            <img src="assets/workforce-acceleration.png" alt="Workforce Acceleration" />
-          </div>
-          <h3>Workforce Acceleration</h3>
-          <p>Helping global companies hire top talent quickly and efficiently, from Fortune 100s to fast-growing teams.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-embed">
-            <div class="placeholder">Cloud Infrastructure Image</div>
-          </div>
-          <h3>Cloud Infrastructure</h3>
-          <p>Scalable cloud solutions designed for performance, security, and cost-efficiency across all major platforms.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-embed">
-            <div class="placeholder">Automation Solutions Image</div>
-          </div>
-          <h3>Process Automation</h3>
-          <p>streamline operations with intelligent automation workflows that reduce manual tasks and improve efficiency.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-embed">
-            <div class="placeholder">Digital Transformation Image</div>
-          </div>
-          <h3>Digital Transformation</h3>
-          <p>End-to-end digital modernization strategies that align technology with your business objectives and growth goals.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-embed">
-            <div class="placeholder">Security Solutions Image</div>
-          </div>
-          <h3>Cybersecurity Solutions</h3>
-          <p>Comprehensive security frameworks protecting your data, applications, and infrastructure from modern threats.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-embed">
-            <div class="placeholder">Integration Services Image</div>
-          </div>
-          <h3>System Integration</h3>
-          <p>Seamless integration of disparate systems and applications to create unified, efficient technology ecosystems.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-embed">
-            <div class="placeholder">Consulting Services Image</div>
-          </div>
-          <h3>Strategic Consulting</h3>
-          <p>Expert guidance on technology strategy, digital roadmaps, and implementation planning for sustainable growth.</p>
-          <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
-        </div>
+  <!-- Services Preview -->
+  <section class="services-preview container">
+    <div class="services-header">
+      <h2>Our Services</h2>
+      <a href="services.html" class="see-all button-with-arrow">See All <span class="arrow">→</span></a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card hoverable">
+        <div class="service-embed"><img src="assets/ai-agent.png" alt="AI Agent"></div>
+        <h3>Personalized AI Agents</h3>
+        <p>Build intelligent assistants customized for your workflows using secure, scalable large language models.</p>
+        <a href="services.html" class="learn-btn button-with-arrow">Learn More <span class="arrow">→</span></a>
       </div>
+
+      <div class="service-card hoverable">
+        <div class="service-embed"><img src="assets/data-analytics.png" alt="Data Analytics"></div>
+        <h3>Data Analytics</h3>
+        <p>Unlock insights with tailored dashboards, custom reporting pipelines, and predictive models.</p>
+        <a href="services.html" class="learn-btn button-with-arrow">Learn More <span class="arrow">→</span></a>
+      </div>
+
+      <div class="service-card hoverable">
+        <div class="service-embed"><img src="assets/workforce-acceleration.png" alt="Workforce Acceleration"></div>
+        <h3>Workforce Acceleration</h3>
+        <p>Helping global companies hire top talent quickly and efficiently, from Fortune 100s to fast-growing teams.</p>
+        <a href="services.html" class="learn-btn button-with-arrow">Learn More <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-cards container">
+    <div class="card">
+      <h3>Our Experience</h3>
+      <ul>
+        <li>Personalized AI agents and agentic workflows</li>
+        <li>Scientific data analysis and modeling</li>
+        <li>Java-based frameworks and enterprise systems</li>
+        <li>Cloud-based development and deployment</li>
+        <li>End-to-end integration and security</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Our Approach</h3>
+      <p>It is important to understanding your unique challenges and goals. Through collaborative planning, we identify opportunities, create realistic timelines, and implement solutions that yield results quickly and efficiently.</p>
+    </div>
+    <div class="card">
+      <h3>Why Us?</h3>
+      <p>Beyond developing solutions, we serve as partners in your success. You receive our dedicated attention, clear communication, and the expert guidance needed to make informed decisions about your investments.</p>
     </div>
   </section>
 
@@ -513,36 +754,49 @@
   </footer>
 
   <script>
-    function toggleMobileMenu() {
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      const menu = document.getElementById('mobileMenu');
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    mobileMenuToggle.addEventListener('click', function() {
+      mobileNav.classList.toggle('active');
       
-      toggle.classList.toggle('active');
-      menu.classList.toggle('active');
-    }
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        const menu = document.getElementById('mobileMenu');
-        
-        toggle.classList.remove('active');
-        menu.classList.remove('active');
-      });
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      const menu = document.getElementById('mobileMenu');
-      const navbar = document.querySelector('.navbar');
-      
-      if (!navbar.contains(e.target)) {
-        toggle.classList.remove('active');
-        menu.classList.remove('active');
+      // Animate hamburger menu
+      const spans = mobileMenuToggle.querySelectorAll('span');
+      if (mobileNav.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
       }
     });
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = mobileNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('active');
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!mobileMenuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+        mobileNav.classList.remove('active');
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+  });
   </script>
 </body>
 </html>
