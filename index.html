@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proof99</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .tagline {
+      color: #7b9bb1;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    
+    /* Responsive 3D Graphic Styles */
+    .hero-embed-wrapper {
+      position: absolute;
+      top: -135px;
+      right: 0;
+      width: 670px;
+      height: 650px;
+      transform: scale(0.85);
+      transform-origin: top right;
+      z-index: 3;
+    }
+    
+    .badge-cover {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 150px;
+      height: 50px;
+      background-color: #f5f5f5;
+      z-index: 6;
+      border-radius: 8px;
+    }
+    
+    /* Responsive breakpoints */
+    @media (max-width: 1200px) {
+      .hero-embed-wrapper {
+        width: min(550px, 45vw);
+        height: min(530px, 43vw);
+        top: -8%;
+        right: -3%;
+      }
+    }
+    
+    @media (max-width: 968px) {
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-embed-wrapper {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: min(500px, 80vw);
+        height: min(480px, 76vw);
+        margin: 2rem auto 0 auto;
+        transform-origin: center;
+      }
+      
+      .hero-text {
+        flex: none;
+        margin-bottom: 1rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-embed-wrapper {
+        width: min(400px, 90vw);
+        height: min(380px, 86vw);
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-embed-wrapper {
+        width: 95vw;
+        height: 90vw;
+      }
+      
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      
+      .badge-cover {
+        width: 15vw;
+        height: 5vw;
+        border-radius: 1vw;
+      }
+    }
+    
+    /* Zoom level adjustments */
+    @media (min-width: 1400px) {
+      .hero-embed-wrapper {
+        width: min(700px, 45vw);
+        height: min(680px, 44vw);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-flex">
+      <a href="index.html" class="logo">Proof99</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="contact.html" class="cta">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Experienced, Personalized<br>IT Solutions</h1>
+        <p><span class="tagline">Autonomy, reliability, clarity.</span></p>
+        <a href="contact.html" class="learn-btn button-with-arrow">Learn More <span class="arrow">→</span></a>
+      </div>
+      <div class="hero-embed-wrapper">
+        <div class="hero-embed">
+          <iframe 
+            src="https://my.spline.design/laptopmockup-GJJf2HqIU2zmP0xenLIRXvB2/" 
+            frameborder="0" 
+            allowfullscreen>
+          </iframe>
+          <div class="iframe-overlay"></div>
+          <div class="badge-cover"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="services-preview container">
+    <div class="services-header">
+      <h2>Our Services</h2>
+      <a href="services.html" class="see-all button-with-arrow">See All <span class="arrow">→</span></a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card hoverable">
+        <div class="service-embed"><img src="assets/ai-agent.png" alt="AI Agent"></div>
+        <h3>Personalized AI Agents</h3>
+        <p>Build intelligent assistants customized for your workflows using secure, scalable large language models.</p>
+        <a href="services.html" class="learn-btn button-with-arrow">Learn More <span class="arrow">→</span></a>
+      </div>
+
+      <div class="service-card hoverable">
+        <div class="service-embed"><img src="assets/data-analytics.png" alt="Data Analytics"></div>
+        <h3>Data Analytics</h3>
+        <p>Unlock insights with tailored dashboards, custom reporting pipelines, and predictive models.</p>
+        <a href="services.html" class="learn-btn button-with-arrow">Learn More <span class="arrow">→</span></a>
+      </div>
+
+      <div class="service-card hoverable">
+        <div class="service-embed"><img src="assets/workforce-acceleration.png" alt="Workforce Acceleration"></div>
+        <h3>Workforce Acceleration</h3>
+        <p>Helping global companies hire top talent quickly and efficiently, from Fortune 100s to fast-growing teams.</p>
+        <a href="services.html" class="learn-btn button-with-arrow">Learn More <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-cards container">
+    <div class="card">
+      <h3>Our Experience</h3>
+      <ul>
+        <li>Personalized AI agents and agentic workflows</li>
+        <li>Scientific data analysis and modeling</li>
+        <li>Java-based frameworks and enterprise systems</li>
+        <li>Cloud-based development and deployment</li>
+        <li>End-to-end integration and security</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Our Approach</h3>
+      <p>It is important to understanding your unique challenges and goals. Through collaborative planning, we identify opportunities, create realistic timelines, and implement solutions that yield results quickly and efficiently.</p>
+    </div>
+    <div class="card">
+      <h3>Why Us?</h3>
+      <p>Beyond developing solutions, we serve as partners in your success. You receive our dedicated attention, clear communication, and the expert guidance needed to make informed decisions about your investments.</p>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-column">
+        <h3>Proof99</h3>
+        <p>Let us build the infrastructure<br> for your success!</p>
+      </div>
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p><a href="mailto:andy@proof99.com">andy@proof99.com</a></p>
+        <p><a href="contact.html" class="footer-contact-link">Get in touch →</a></p>
+        <p style="margin-top: 1rem;">© 2025 Proof99 — All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Proof99</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-flex">
+      <a href="index.html" class="logo">Proof99</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="contact.html" class="cta">Contact Us</a>
+    </div>
+  </header>
+
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Get In Touch</h1>
+      <p>Ready to build something amazing? Let's discuss your project and see how we can help accelerate your success.</p>
+    </div>
+  </section>
+
+  <section class="contact-form-section">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h2>Let's Start a Conversation</h2>
+          <p>Whether you need AI agents, data analytics, or workforce acceleration, we're here to help you build the infrastructure for success.</p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <h4>Email</h4>
+              <p><a href="mailto:andy@proof99.com">andy@proof99.com</a></p>
+            </div>
+            <div class="contact-item">
+              <h4>Response Time</h4>
+              <p>We typically respond within 24 hours</p>
+            </div>
+            <div class="contact-item">
+              <h4>Services</h4>
+              <p>AI Agents • Data Analytics • Workforce Acceleration</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-container">
+          <!-- SUCCESS/ERROR MESSAGES -->
+          <div id="form-messages" style="display: none; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+            <p id="message-text"></p>
+          </div>
+
+          <!-- Updated Formspree Integration with your actual endpoint -->
+          <form class="contact-form" action="https://formspree.io/f/xgvyargk" method="POST" id="contact-form">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company (Optional)</label>
+              <input type="text" id="company" name="company">
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interest</label>
+              <select id="service" name="service">
+                <option value="">Select a service...</option>
+                <option value="ai-agents">Personalized AI Agents</option>
+                <option value="data-analytics">Data Analytics</option>
+                <option value="workforce-acceleration">Workforce Acceleration</option>
+                <option value="consultation">General Consultation</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description of Needs *</label>
+              <textarea id="description" name="message" rows="5" placeholder="Tell us about your project, challenges, or what you're looking to achieve..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="timeline">Project Timeline</label>
+              <select id="timeline" name="timeline">
+                <option value="">Select timeline...</option>
+                <option value="asap">ASAP</option>
+                <option value="1-month">Within 1 month</option>
+                <option value="3-months">Within 3 months</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </div>
+
+            <!-- Hidden fields for Formspree -->
+            <input type="hidden" name="_subject" value="New Contact Form Submission - Proof99">
+
+            <button type="submit" class="submit-btn button-with-arrow" id="submit-button">
+              <span class="button-text">Get In Touch</span>
+              <span class="arrow">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-column">
+        <h3>Proof99</h3>
+        <p>Let us build the infrastructure for your success!</p>
+      </div>
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p><a href="mailto:andy@proof99.com">andy@proof99.com</a></p>
+        <p style="margin-top: 1rem;">© 2025 Proof99 — All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced form submission with loading states and error handling
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      const submitButton = document.getElementById('submit-button');
+      const buttonText = submitButton.querySelector('.button-text');
+      const formMessages = document.getElementById('form-messages');
+      const messageText = document.getElementById('message-text');
+      
+      // Show loading state
+      submitButton.disabled = true;
+      buttonText.textContent = 'Sending...';
+      submitButton.style.opacity = '0.7';
+      
+      // Hide any previous messages
+      formMessages.style.display = 'none';
+      
+      // Basic validation
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const description = document.getElementById('description').value.trim();
+      
+      if (!name || !email || !description) {
+        e.preventDefault();
+        showMessage('Please fill in all required fields.', 'error');
+        resetButton();
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        e.preventDefault();
+        showMessage('Please enter a valid email address.', 'error');
+        resetButton();
+        return;
+      }
+    });
+    
+    function showMessage(text, type) {
+      const formMessages = document.getElementById('form-messages');
+      const messageText = document.getElementById('message-text');
+      
+      messageText.textContent = text;
+      formMessages.style.display = 'block';
+      
+      if (type === 'success') {
+        formMessages.style.backgroundColor = '#d4edda';
+        formMessages.style.color = '#155724';
+        formMessages.style.border = '1px solid #c3e6cb';
+      } else {
+        formMessages.style.backgroundColor = '#f8d7da';
+        formMessages.style.color = '#721c24';
+        formMessages.style.border = '1px solid #f5c6cb';
+      }
+    }
+    
+    function resetButton() {
+      const submitButton = document.getElementById('submit-button');
+      const buttonText = submitButton.querySelector('.button-text');
+      
+      submitButton.disabled = false;
+      buttonText.textContent = 'Get In Touch';
+      submitButton.style.opacity = '1';
+    }
+  </script>
+</body>
+</html>
