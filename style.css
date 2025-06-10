@@ -663,3 +663,143 @@ body {
 .footer-contact-link:hover::after {
   width: calc(100% - 1rem);
 }
+
+
+/* Mobile Navbar Optimization - Add this to your style.css */
+
+/* Existing navbar styles remain the same, but add these mobile-specific rules */
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #222;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: rgba(123, 155, 177, 0.1);
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #222;
+  margin: 5px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem; /* Reduce container padding on mobile */
+  }
+  
+  .nav-flex {
+    position: relative;
+  }
+  
+  .logo {
+    font-size: 1.5rem; /* Slightly smaller logo on mobile */
+  }
+  
+  /* Hide desktop navigation on mobile */
+  .navbar nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(225, 234, 242, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .navbar nav.active {
+    display: block;
+  }
+  
+  .navbar ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+  }
+  
+  .navbar ul li {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .navbar ul li:last-child {
+    border-bottom: none;
+  }
+  
+  .navbar ul li a {
+    display: block;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .navbar ul li a:hover {
+    background-color: rgba(123, 155, 177, 0.1);
+    transform: none; /* Remove scale transform on mobile */
+  }
+  
+  /* Show mobile menu toggle */
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  /* Hide desktop CTA button on mobile, show in menu instead */
+  .cta {
+    display: none;
+  }
+  
+  /* Add CTA to mobile menu */
+  .navbar ul li.mobile-cta {
+    margin-top: 0.5rem;
+    border-bottom: none;
+  }
+  
+  .navbar ul li.mobile-cta a {
+    background-color: #7b9bb1;
+    color: white;
+    margin: 0 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  
+  .navbar ul li.mobile-cta a:hover {
+    background-color: #6a90a7;
+  }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .navbar {
+    padding: 0.75rem 0;
+  }
+  
+  .navbar ul li a {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
