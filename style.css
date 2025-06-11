@@ -97,8 +97,8 @@ body {
   border-radius: 4px;
   transition: background-color 0.2s ease;
   flex-direction: column;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   justify-content: center;
   align-items: center;
 }
@@ -109,10 +109,10 @@ body {
 
 .mobile-menu-toggle span {
   display: block;
-  width: 20px;
-  height: 2px;
+  width: 22px;
+  height: 3px;
   background-color: #222;
-  margin: 3px 0;
+  margin: 2px 0;
   transition: 0.3s;
   border-radius: 2px;
 }
@@ -130,18 +130,20 @@ body {
   
   .nav-flex {
     position: relative;
-    justify-content: center; /* Center the logo */
+    justify-content: center;
+    gap: 0.75rem;
   }
   
   .logo {
     font-size: 1.5rem;
-    order: 2; /* Place logo in middle */
+    order: 2;
   }
   
-  /* Position hamburger menu on left */
+  /* Position hamburger menu next to logo */
   .mobile-menu-toggle {
-    order: 1; /* Place hamburger first */
-    margin-right: auto; /* Push to left */
+    display: flex;
+    order: 1;
+    position: static;
   }
   
   /* Hide desktop navigation and CTA on mobile */
@@ -154,13 +156,14 @@ body {
     display: block;
     position: absolute;
     top: 100%;
-    left: -1rem;
-    right: -1rem;
+    left: 0;
+    right: 0;
     background-color: rgba(225, 234, 242, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    margin: 0 -1rem;
   }
   
   .navbar nav ul {
@@ -190,11 +193,6 @@ body {
     transform: none;
   }
   
-  /* Show mobile menu toggle */
-  .mobile-menu-toggle {
-    display: flex;
-  }
-  
   /* Show mobile CTA in menu */
   .mobile-cta {
     display: block;
@@ -212,6 +210,14 @@ body {
   
   .mobile-cta a:hover {
     background-color: #6a90a7 !important;
+  }
+
+  /* Highlight active mobile nav link */
+  #mobile-nav ul li a.active,
+  #mobile-nav ul li.mobile-cta a.active {
+    background-color: #7b9bb1 !important;
+    color: #fff !important;
+    border-radius: 8px;
   }
 }
 
@@ -240,6 +246,7 @@ body {
   padding: 5rem 0;
   background-color: #f5f5f5;
   overflow: visible;
+  position: relative;
 }
 
 .hero-content {
@@ -253,6 +260,8 @@ body {
 
 .hero-text {
   flex: 1 1 50%;
+  position: relative;
+  z-index: 10;
 }
 
 .hero-text h1 {
@@ -371,26 +380,34 @@ body {
   }
   
   .hero-embed-wrapper {
-    position: relative;
-    top: 0;
-    right: 0;
-    width: min(350px, 70vw); /* Made smaller for mobile */
-    height: min(330px, 66vw); /* Made smaller for mobile */
-    margin: 2rem auto 0 auto;
-    transform-origin: center;
-    transform: scale(1); /* Reset scale for mobile */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.4);
+    width: 670px;
+    height: 650px;
+    z-index: 1;
+    opacity: 0.25;
   }
   
   .hero-text {
     flex: none;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .badge-cover {
+    width: 155px;
+    height: 60px;
+    bottom: 5px;
+    right: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .hero-embed-wrapper {
-    width: min(300px, 80vw); /* Even smaller on smaller screens */
-    height: min(280px, 76vw);
+    transform: translate(-50%, -50%) scale(0.35);
   }
   
   .hero-text h1 {
@@ -400,8 +417,7 @@ body {
 
 @media (max-width: 480px) {
   .hero-embed-wrapper {
-    width: min(280px, 85vw); /* Smaller still on very small screens */
-    height: min(260px, 81vw);
+    transform: translate(-50%, -50%) scale(0.3);
   }
   
   .hero-text h1 {
@@ -409,9 +425,9 @@ body {
   }
   
   .badge-cover {
-    width: 12vw;
-    height: 4vw;
-    border-radius: 1vw;
+    width: 45px;
+    height: 15px;
+    border-radius: 3px;
   }
 }
 
@@ -474,7 +490,7 @@ body {
   .services-header {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     text-align: center;
   }
   
@@ -497,10 +513,17 @@ body {
 
 /* Services Grid */
 .services-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  margin-top: 2rem;
+  justify-items: center;
+}
+
+@media (max-width: 968px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .service-card {
@@ -806,6 +829,7 @@ body {
   cursor: pointer;
 }
 
+
 .file-upload-text {
   display: flex;
   flex-direction: column;
@@ -905,4 +929,57 @@ body {
   .contact-details {
     gap: 1rem;
   }
+}
+
+
+/* --- Mobile-Only Overrides --- */
+@media (max-width: 968px) {
+  /* Center Spline graphic behind hero text on mobile */
+  .hero-embed-wrapper {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -45%) scale(0.85) !important;
+    transform-origin: center center !important;
+    opacity: 0.5 !important;
+    z-index: 1 !important;
+  }
+
+  /* Ensure hero text sits above the embed */
+  .hero-text {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  /* Reduce vertical padding around hero on mobile */
+  .hero {
+    padding: 3rem 0 !important;
+  }
+
+  /* Tighten spacing between hero and services on mobile */
+  .services-header {
+    margin-bottom: 1rem !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Slight spacing below the section heading on mobile */
+  .services-header h2 {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+
+/* Reset any active link styling on desktop */
+.navbar nav ul li a.active {
+    background: none !important;
+    color: #222 !important;
+}
+
+/* Mobile-only highlight */
+@media (max-width: 968px) {
+    .navbar nav ul li a.active {
+        background-color: #7b9bb1;
+        color: white;
+        border-radius: 8px;
+    }
 }
