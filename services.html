@@ -4,98 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services - Proof99</title>
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Base styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: #f5f5f5;
-      color: #222;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Navbar */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background-color: rgba(225, 234, 242, 0.85);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
-    }
-
-    .nav-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: bold;
-      font-size: 1.8rem;
-      transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
-      color: #222;
-      text-decoration: none;
-    }
-
-    .logo:hover {
-      transform: scale(1.06);
-      color: #7b9bb1;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    .navbar ul li a {
-      text-decoration: none;
-      color: #222;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
-      display: inline-block;
-    }
-
-    .navbar ul li a:hover {
-      color: #7b9bb1;
-      transform: scale(1.08);
-    }
-
-    /* CTA Button */
-    .cta {
-      background-color: #7b9bb1;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .cta:hover {
-      background-color: #6a90a7;
-      transform: scale(1.06);
-    }
-
-    /* Services Hero */
+    /* Services-specific styles only */
     .services-hero {
       background-color: #f5f5f5;
       padding: 2.5rem 0 1.5rem 0;
@@ -115,7 +27,6 @@
       margin: 0 auto;
     }
 
-    /* Services Grid Section */
     .services-section {
       padding: 4rem 0;
       background-color: #ffffff;
@@ -123,9 +34,16 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       margin-top: 2rem;
+      justify-items: center;
+    }
+
+    @media (max-width: 968px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .service-card {
@@ -186,120 +104,6 @@
       line-height: 1.6;
     }
 
-    /* Button with Arrow */
-    .button-with-arrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0rem;
-      margin-top: auto;
-      padding: 0.75rem 1.3rem;
-      border: 2px solid #111;
-      background: none;
-      text-decoration: none;
-      font-weight: bold;
-      color: #111;
-      border-radius: 5px;
-      position: relative;
-      transition: all 0.3s ease;
-      overflow: hidden;
-      min-width: 140px;
-      text-align: center;
-    }
-
-    .button-with-arrow .arrow {
-      opacity: 0;
-      transition: all 0.3s ease;
-      position: absolute;
-      right: 1.3rem;
-      top: 50%;
-      transform: translateY(-50%) translateX(10px);
-    }
-
-    .button-with-arrow:hover {
-      padding-right: 2.5rem;
-      padding-left: 1.3rem;
-      background-color: #f0f0f0;
-    }
-
-    .button-with-arrow:hover .arrow {
-      opacity: 1;
-      transform: translateY(-50%) translateX(0);
-    }
-
-    /* Footer */
-    .site-footer {
-      background-color: #7b9bb1;
-      color: white;
-      padding: 3rem 0;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-
-    .footer-column {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .footer-column h4 {
-      margin-bottom: 1rem;
-    }
-
-    .footer-column ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-column ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-column a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .footer-column a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-contact-link {
-      color: #ffffff !important;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-block;
-      margin-top: 0.5rem;
-      position: relative;
-      padding-right: 1rem;
-    }
-
-    .footer-contact-link:hover {
-      color: #e1eaf2 !important;
-      text-decoration: none;
-      transform: translateX(3px);
-    }
-
-    .footer-contact-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background-color: #ffffff;
-      transition: width 0.3s ease;
-    }
-
-    .footer-contact-link:hover::after {
-      width: calc(100% - 1rem);
-    }
-
     /* Responsive Design */
     @media (max-width: 768px) {
       .services-hero {
@@ -332,29 +136,28 @@
       .services-hero h1 {
         font-size: 1.8rem;
       }
-      
-      .navbar ul {
-        gap: 1rem;
-      }
-      
-      .navbar ul li a {
-        font-size: 1rem;
-      }
     }
   </style>
 </head>
 <body>
   <header class="navbar">
     <div class="container nav-flex">
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <a href="index.html" class="logo">Proof99</a>
-      <nav>
+      
+      <nav id="mobile-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
           <li><a href="#">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+
       <a href="contact.html" class="cta">Contact Us</a>
     </div>
   </header>
@@ -373,7 +176,7 @@
       <div class="services-grid">
         <div class="service-card">
           <div class="service-embed">
-            <img src="ai-agent.png" alt="AI Agent" />
+            <img src="assets/ai-agent.png" alt="AI Agent" />
           </div>
           <h3>Personalized AI Agents</h3>
           <p>Build intelligent assistants customized for your workflows using secure, scalable large language models.</p>
@@ -382,7 +185,7 @@
 
         <div class="service-card">
           <div class="service-embed">
-            <img src="data-analytics.png" alt="Data Analytics" />
+            <img src="assets/data-analytics.png" alt="Data Analytics" />
           </div>
           <h3>Data Analytics</h3>
           <p>Unlock insights with tailored dashboards, custom reporting pipelines, and predictive models.</p>
@@ -391,7 +194,7 @@
 
         <div class="service-card">
           <div class="service-embed">
-            <img src="workforce-acceleration.png" alt="Workforce Acceleration" />
+            <img src="assets/workforce-acceleration.png" alt="Workforce Acceleration" />
           </div>
           <h3>Workforce Acceleration</h3>
           <p>Helping global companies hire top talent quickly and efficiently, from Fortune 100s to fast-growing teams.</p>
@@ -400,7 +203,7 @@
 
         <div class="service-card">
           <div class="service-embed">
-            <img src="cloud.png" alt="Cloud" />
+            <img src="assets/cloud.png" alt="Cloud" />
           </div>
           <h3>Cloud Infrastructure</h3>
           <p>Scalable cloud solutions designed for performance, security, and cost-efficiency across all major platforms.</p>
@@ -409,7 +212,7 @@
 
         <div class="service-card">
           <div class="service-embed">
-            <img src="process_auto.png" alt="Process Automation" />
+            <img src="assets/process_auto.png" alt="Process Automation" />
           </div>
           <h3>Process Automation</h3>
           <p>Streamline operations with automation workflows to reduce manual tasks and increase efficiency.</p>
@@ -418,7 +221,7 @@
 
         <div class="service-card">
           <div class="service-embed">
-            <div class="placeholder">Cybersecurity Services Image</div>
+            <img src="assets/cyber.png" alt="Cybersecurity" />
           </div>
           <h3>Cybersecurity Solutions</h3>
           <p>Comprehensive security frameworks protecting your data, applications, and infrastructure from modern threats.</p>
@@ -427,19 +230,19 @@
 
         <div class="service-card">
           <div class="service-embed">
-            <div class="placeholder">Integration Services Image</div>
+            <img src="assets/system_int.png" alt="System Integration" />
           </div>
           <h3>System Integration</h3>
-          <p>Seamless integration of disparate systems and applications to create unified, efficient technology ecosystems.</p>
+          <p>Seamless integration of systems and applications to create unified and efficient technology ecosystems.</p>
           <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
         </div>
 
         <div class="service-card">
           <div class="service-embed">
-            <div class="placeholder">Consulting Services Image</div>
+            <img src="assets/consult.png" alt="Strategic Consulting" />
           </div>
           <h3>Strategic Consulting</h3>
-          <p>Expert guidance on technology strategy, digital roadmaps, and implementation planning for sustainable growth.</p>
+          <p>Expert guidance on technology solutions, implementation strategies, and planning for business growth.</p>
           <a href="contact.html" class="button-with-arrow">Learn More <span class="arrow">→</span></a>
         </div>
       </div>
@@ -470,5 +273,48 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    mobileMenuToggle.addEventListener('click', function() {
+      mobileNav.classList.toggle('active');
+      const spans = mobileMenuToggle.querySelectorAll('span');
+      if (mobileNav.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+
+    const navLinks = mobileNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('active');
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!mobileMenuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+        mobileNav.classList.remove('active');
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+  });
+  </script>
+
 </body>
 </html>
