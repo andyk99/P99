@@ -987,15 +987,21 @@ body {
 
 /* Reset any active link styling on desktop */
 .navbar nav ul li a.active {
-    background: none !important;
-    color: #222 !important;
+  background: none !important;
+  color: #222;
 }
 
-/* Mobile-only highlight */
+/* Mobile-only highlight - active links get background only on mobile */
 @media (max-width: 968px) {
-    .navbar nav ul li a.active {
-        background-color: #7b9bb1;
-        color: white;
-        border-radius: 8px;
-    }
+  .navbar nav ul li a.active {
+    background-color: #7b9bb1;
+    color: white;
+    border-radius: 8px;
+  }
+  
+  /* On mobile, active links should still change color on hover */
+  .navbar nav ul li a.active:hover {
+    background-color: #6a90a7 !important;
+    color: white !important;
+  }
 }
