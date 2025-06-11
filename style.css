@@ -40,15 +40,31 @@ body {
 .logo {
   font-weight: bold;
   font-size: 1.8rem;
-  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
-  color: #222;
   text-decoration: none;
+  background: linear-gradient(-45deg, #222, #7b9bb1, #222, #7b9bb1);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4.5s ease-in-out infinite;
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
 .logo:hover {
   transform: scale(1.06);
-  color: #7b9bb1;
-  transition: all 0.2s ease-in-out;
+  filter: brightness(1.4) saturate(1.2);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .navbar nav ul {
