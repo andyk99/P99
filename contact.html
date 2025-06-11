@@ -10,15 +10,22 @@
 <body>
   <header class="navbar">
     <div class="container nav-flex">
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <a href="index.html" class="logo">Proof99</a>
-      <nav>
+      
+      <nav id="mobile-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="#">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
       </nav>
+
       <a href="contact.html" class="cta">Contact Us</a>
     </div>
   </header>
@@ -36,7 +43,7 @@
         <div class="contact-info">
           <h2>Let's Start a Conversation</h2>
           <p>Whether you need AI agents, data analytics, or workforce acceleration, we're here to help you build the infrastructure for success.</p>
-          
+
           <div class="contact-details">
             <div class="contact-item">
               <h4>Email</h4>
@@ -54,12 +61,10 @@
         </div>
 
         <div class="contact-form-container">
-          <!-- SUCCESS/ERROR MESSAGES -->
           <div id="form-messages" style="display: none; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
             <p id="message-text"></p>
           </div>
 
-          <!-- Updated Formspree Integration with your actual endpoint -->
           <form class="contact-form" action="https://formspree.io/f/xgvyargk" method="POST" id="contact-form">
             <div class="form-group">
               <label for="name">Name *</label>
@@ -104,7 +109,6 @@
               </select>
             </div>
 
-            <!-- Hidden fields for Formspree -->
             <input type="hidden" name="_subject" value="New Contact Form Submission - Proof99">
 
             <button type="submit" class="submit-btn button-with-arrow" id="submit-button">
@@ -141,69 +145,45 @@
   </footer>
 
   <script>
-    // Enhanced form submission with loading states and error handling
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      const submitButton = document.getElementById('submit-button');
-      const buttonText = submitButton.querySelector('.button-text');
-      const formMessages = document.getElementById('form-messages');
-      const messageText = document.getElementById('message-text');
-      
-      // Show loading state
-      submitButton.disabled = true;
-      buttonText.textContent = 'Sending...';
-      submitButton.style.opacity = '0.7';
-      
-      // Hide any previous messages
-      formMessages.style.display = 'none';
-      
-      // Basic validation
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const description = document.getElementById('description').value.trim();
-      
-      if (!name || !email || !description) {
-        e.preventDefault();
-        showMessage('Please fill in all required fields.', 'error');
-        resetButton();
-        return;
-      }
-      
-      // Email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        e.preventDefault();
-        showMessage('Please enter a valid email address.', 'error');
-        resetButton();
-        return;
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    mobileMenuToggle.addEventListener('click', function() {
+      mobileNav.classList.toggle('active');
+      const spans = mobileMenuToggle.querySelectorAll('span');
+      if (mobileNav.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
       }
     });
-    
-    function showMessage(text, type) {
-      const formMessages = document.getElementById('form-messages');
-      const messageText = document.getElementById('message-text');
-      
-      messageText.textContent = text;
-      formMessages.style.display = 'block';
-      
-      if (type === 'success') {
-        formMessages.style.backgroundColor = '#d4edda';
-        formMessages.style.color = '#155724';
-        formMessages.style.border = '1px solid #c3e6cb';
-      } else {
-        formMessages.style.backgroundColor = '#f8d7da';
-        formMessages.style.color = '#721c24';
-        formMessages.style.border = '1px solid #f5c6cb';
+
+    const navLinks = mobileNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('active');
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!mobileMenuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+        mobileNav.classList.remove('active');
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
       }
-    }
-    
-    function resetButton() {
-      const submitButton = document.getElementById('submit-button');
-      const buttonText = submitButton.querySelector('.button-text');
-      
-      submitButton.disabled = false;
-      buttonText.textContent = 'Get In Touch';
-      submitButton.style.opacity = '1';
-    }
+    });
+  });
   </script>
 </body>
 </html>
